@@ -1,3 +1,16 @@
+---
+title: "Clay Odin Bindings"
+tags: [clay, odin, bindings, ui]
+category: "bindings"
+created: 2026-10-20
+source: "https://github.com/nicbarker/clay"
+type: binding
+status: stable
+description: "Odin language bindings for the Clay UI library with quick start guide and code examples."
+---
+
+# Clay Odin Bindings
+
 ### Odin Language Bindings
 
 This directory contains bindings for the [Odin](odin-lang.org) programming language, as well as an example implementation of the [Clay website](https://nicbarker.com/clay) in Odin.
@@ -8,9 +21,14 @@ Special thanks to
 - [Dudejoe870](https://github.com/Dudejoe870)
 - MrStevns from the Odin Discord server
 
+---
+
+## 💡 概述
+
 If you haven't taken a look at the [full documentation for Clay](https://github.com/nicbarker/clay/blob/main/README.md), it's recommended that you take a look there first to familiarise yourself with the general concepts. This README is abbreviated and applies to using Clay in Odin specifically.
 
 The **most notable difference** between the C API and the Odin bindings is the use of `if` statements to create the scope for declaring child elements, when using the equivalent of the [Element Macros](https://github.com/nicbarker/clay/blob/main/README.md#element-macros):
+
 ```C
 // C form of element macros
 // Define an element with 16px of x and y padding
@@ -26,7 +44,45 @@ if clay.UI(clay.ID("Outer"))({ layout = { padding = clay.PaddingAll(16) }}) {
 }
 ```
 
-### Quick Start
+---
+
+## ⚡ 功能
+
+- Odin 语言绑定，映射所有 Clay 公共 C 函数和宏（`CLAY_ID` -> `clay.ID`）
+- 使用 Odin `if` 语句替代 C 宏创建子元素作用域
+- 支持静态声明和内联布局配置
+- 支持可复用组件（普通 Odin proc）
+- 与 Clay 渲染管线完全集成
+
+---
+
+## 📊 指标
+
+「待补充」
+
+---
+
+## 🏛️ 设计
+
+「待补充」
+
+---
+
+## 📁 目录
+
+「待补充」
+
+---
+
+## 🔗 资源
+
+- [Full Clay Documentation](https://github.com/nicbarker/clay/blob/main/README.md)
+- [Clay Website](https://nicbarker.com/clay)
+- [Odin Language](odin-lang.org)
+
+---
+
+## 🚀 快速开始
 
 1. Download the [clay-odin](https://github.com/nicbarker/clay/tree/main/bindings/odin/clay-odin) directory and copy it into your project.
 
@@ -45,7 +101,7 @@ min_memory_size := clay.MinMemorySize()
 memory := make([^]u8, min_memory_size)
 arena: clay.Arena = clay.CreateArenaWithCapacityAndMemory(uint(min_memory_size), memory)
 clay.Initialize(arena, {1080, 720}, { handler = error_handler })
-``` 
+```
 
 3. Provide a `measure_text(text, config)` proc "c" with [clay.SetMeasureTextFunction(function)](https://github.com/nicbarker/clay/blob/main/README.md#clay_setmeasuretextfunction) so that Clay can measure and wrap text.
 
@@ -201,3 +257,10 @@ for i in 0..<i32(render_commands.length) {
 ```
 
 Please see the [full C documentation for Clay](https://github.com/nicbarker/clay/blob/main/README.md) for API details. All public C functions and Macros have Odin binding equivalents, generally of the form `CLAY_ID` (C) -> `clay.ID` (Odin).
+
+---
+
+## ⚙️ 技术栈
+
+- Odin Programming Language
+- Clay UI Library
